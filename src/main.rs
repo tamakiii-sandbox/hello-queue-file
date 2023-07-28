@@ -16,7 +16,9 @@ struct ParseError {
 
 fn main() {
     match parse_args() {
-        Ok(args) => println!("{}", args.file),
+        Ok(args) => {
+            println!("{}", args.file)
+        }
         Err(errors) => {
             for violation in errors.violations {
                 println!("Error: {} at `{}`", violation.message, violation.root);
@@ -52,4 +54,12 @@ fn parse_args() -> Result<Args, ParseError> {
     Ok(Args {
         file: parsed.file.unwrap(),
     })
+}
+
+#[cfg(test)]
+mod test {
+    #[test]
+    fn test() {
+        // TODO
+    }
 }
